@@ -14,6 +14,7 @@
         "doctrine/orm": "^2.15",
         "lexik/jwt-authentication-bundle": "^2.19",
         "liip/imagine-bundle": "^2.11",
+        "mpdf/mpdf": "^8.1",
         "nelmio/cors-bundle": "^2.3",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpoffice/phpspreadsheet": "^1.28",

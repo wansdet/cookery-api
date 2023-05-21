@@ -1,0 +1,7 @@
+# config/serialization/recipe-category.serialization.yaml
+App\Entity\RecipeCategory:
+    attributes:
+        categoryCode:
+            groups: ['RecipeCategory:read', 'RecipeCategory:write']
+        categoryName:
+            groups: ['RecipeCategory:read', 'RecipeCategory:update' ,'RecipeCategory:write']

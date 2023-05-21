@@ -1,0 +1,15 @@
+# config/serialization/recipe-image.serialization.yaml
+App\Entity\RecipeImage:
+    attributes:
+        createdAt:
+            groups: ['RecipeImage:read']
+        filename:
+            groups: ['RecipeImage:read', 'RecipeImage:write']
+        id:
+            groups: ['RecipeImage:read']
+        recipe:
+            groups: ['RecipeImage:read', 'RecipeImage:write']
+        title:
+            groups: ['RecipeImage:read', 'RecipeImage:update', 'RecipeImage:write']
+        updatedAt:
+            groups: ['RecipeImage:read']

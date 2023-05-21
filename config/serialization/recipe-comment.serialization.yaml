@@ -1,0 +1,19 @@
+# config/serialization/recipe-comment.serialization.yaml
+App\Entity\RecipeComment:
+    attributes:
+        comment:
+            groups: ['RecipeComment:read', 'RecipeComment:update' ,'RecipeComment:write']
+        createdAt:
+            groups: ['RecipeComment:read']
+        id:
+            groups: ['RecipeComment:read']
+        rating:
+            groups: ['RecipeComment:read', 'RecipeComment:update' ,'RecipeComment:write']
+        recipe:
+            groups: ['RecipeComment:read', 'RecipeComment:write']
+        status:
+            groups: ['RecipeComment:read', 'RecipeComment:update']
+        user:
+            groups: ['RecipeComment:read', 'RecipeComment:write']
+        updatedAt:
+            groups: ['RecipeComment:read']

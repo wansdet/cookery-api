@@ -1,0 +1,33 @@
+# config/serialization/recipe.serialization.yaml
+App\Entity\Recipe:
+    attributes:
+        categories:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        cooking:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        createdAt:
+            groups: ['Recipe:read']
+        description:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        ingredients:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        preparation:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        recipeComments:
+            groups: ['Recipe:read', 'Recipe:update']
+        recipeId:
+            groups: ['Recipe:read']
+        region:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        status:
+            groups: ['Recipe:read', 'Recipe:update']
+        title:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        user:
+            groups: ['Recipe:read', 'Recipe:write']
+        vegan:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        vegetarian:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        updatedAt:
+            groups: ['Recipe:read']

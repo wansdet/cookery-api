@@ -1,0 +1,11 @@
+# config/serialization/geo-region.serialization.yaml
+App\Entity\GeoRegion:
+    attributes:
+        countries:
+            groups: ['GeoRegion:read']
+        regionCode:
+            groups: ['GeoRegion:read', 'GeoRegion:write']
+        regionName:
+            groups: ['GeoRegion:read', 'GeoRegion:update' ,'GeoRegion:write']
+        sortOrder:
+            groups: ['GeoRegion:read', 'GeoRegion:update' ,'GeoRegion:write']

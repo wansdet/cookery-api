@@ -1,0 +1,31 @@
+# config/serialization/user.serialization.yaml
+App\Entity\User:
+    attributes:
+        ageRange:
+            groups: ['User:read', 'User:update', 'User:write']
+        country:
+            groups: ['User:read', 'User:update', 'User:write']
+        createdAt:
+            groups: ['User:read']
+        displayName:
+            groups: ['User:read', 'User:update', 'User:write']
+        email:
+            groups: ['User:read', 'User:update', 'User:write']
+        firstName:
+            groups: ['User:read', 'User:update', 'User:write']
+        lastName:
+            groups: ['User:read', 'User:update', 'User:write']
+        middleName:
+            groups: ['User:read', 'User:update', 'User:write']
+        password:
+            groups: ['User:update', 'User:write']
+        roles:
+            groups: ['User:read', 'User:update']
+        sex:
+            groups: ['User:read', 'User:update', 'User:write']
+        status:
+            groups: ['User:read', 'User:update']
+        userId:
+            groups: ['User:read']
+        updatedAt:
+            groups: ['User:read']

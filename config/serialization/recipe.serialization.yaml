@@ -5,6 +5,8 @@ App\Entity\Recipe:
             groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
         cooking:
             groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        cookingTime:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
         createdAt:
             groups: ['Recipe:read']
         description:
@@ -13,11 +15,15 @@ App\Entity\Recipe:
             groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
         preparation:
             groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        preparationTime:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
         recipeComments:
             groups: ['Recipe:read', 'Recipe:update']
         recipeId:
             groups: ['Recipe:read']
         region:
+            groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
+        servings:
             groups: ['Recipe:read', 'Recipe:update', 'Recipe:write']
         status:
             groups: ['Recipe:read', 'Recipe:update']

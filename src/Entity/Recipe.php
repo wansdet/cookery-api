@@ -14,6 +14,7 @@ use ApiPlatform\Metadata\Post;
 use App\Repository\RecipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -79,6 +80,11 @@ class Recipe
     #[Assert\Length(min: 3, max: 4000)]
     private ?string $cooking = null;
 
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\Positive]
+    #[Assert\LessThanOrEqual(1440)]
+    private ?int $cookingTime = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(min: 3, max: 255)]
     private ?string $description = null;
@@ -97,6 +103,11 @@ class Recipe
     #[Assert\Length(min: 3, max: 4000)]
     private ?string $preparation = null;
 
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\Positive]
+    #[Assert\LessThanOrEqual(1440)]
+    private ?int $preparationTime = null;
+
     #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeComment::class)]
     private Collection $recipeComments;
 
@@ -110,6 +121,11 @@ class Recipe
     #[ORM\ManyToOne(inversedBy: 'recipes')]
     #[ORM\JoinColumn(name: 'region_code', referencedColumnName: 'region_code', nullable: true)]
     private ?GeoRegion $region = null;
+
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\Positive]
+    #[Assert\LessThanOrEqual(100)]
+    private ?int $servings = null;
 
     #[ORM\Column(length: 20)]
     #[Assert\Choice(choices: self::RECIPE_STATUSES)]
@@ -181,6 +197,11 @@ class Recipe
         return $this->cooking;
     }
 
+    public function getCookingTime(): ?int
+    {
+        return $this->cookingTime;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -199,6 +220,11 @@ class Recipe
     public function getPreparation(): ?string
     {
         return $this->preparation;
+    }
+
+    public function getPreparationTime(): ?int
+    {
+        return $this->preparationTime;
     }
 
     /**
@@ -225,6 +251,11 @@ class Recipe
     public function getRegion(): ?GeoRegion
     {
         return $this->region;
+    }
+
+    public function getServings(): ?int
+    {
+        return $this->servings;
     }
 
     public function getStatus(): ?string
@@ -290,6 +321,13 @@ class Recipe
         return $this;
     }
 
+    public function setCookingTime(?int $cookingTime): self
+    {
+        $this->cookingTime = $cookingTime;
+
+        return $this;
+    }
+
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -311,6 +349,13 @@ class Recipe
         return $this;
     }
 
+    public function setPreparationTime(?int $preparationTime): self
+    {
+        $this->preparationTime = $preparationTime;
+
+        return $this;
+    }
+
     public function setRecipeId(Uuid $recipeId): self
     {
         $this->recipeId = $recipeId;
@@ -321,6 +366,13 @@ class Recipe
     public function setRegion(?GeoRegion $region): self
     {
         $this->region = $region;
+
+        return $this;
+    }
+
+    public function setServings(?int $servings): self
+    {
+        $this->servings = $servings;
 
         return $this;
     }

@@ -40,6 +40,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
 )]
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Recipe
 {
     use TimestampsTrait;

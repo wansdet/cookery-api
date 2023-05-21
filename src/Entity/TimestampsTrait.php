@@ -4,27 +4,23 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use DateTime;
-use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 trait TimestampsTrait
 {
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?DateTimeInterface $createdAt = null;
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Assert\NotNull]
-    private ?DateTimeInterface $updatedAt = null;
+    private ?\DateTimeInterface $updatedAt = null;
 
-    public function getCreatedAt(): ?DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): ?DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -32,22 +28,26 @@ trait TimestampsTrait
     #[ORM\PrePersist]
     public function prePersist(): void
     {
-        $this->setCreatedAt(new DateTime());
+        $this->setCreatedAt(new \DateTimeImmutable());
     }
 
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
-        $this->setUpdatedAt(new DateTime());
+        $this->setUpdatedAt(new \DateTimeImmutable());
     }
 
-    public function setCreatedAt(DateTimeInterface $createdAt): void
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
     }
 
-    public function setUpdatedAt(DateTimeInterface $updatedAt): void
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

@@ -36,6 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
 )]
 #[ORM\Entity(repositoryClass: RecipeCommentRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class RecipeComment
 {
     use TimestampsTrait;

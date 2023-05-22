@@ -23,8 +23,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     operations: [
-        new Get(),
-        new GetCollection(),
+        new Get(
+            security: 'is_granted("ROLE_MODERATOR") or (is_granted("IS_AUTHENTICATED_FULLY") and object.getUserIdentifier() == user.getUserIdentifier())',
+        ),
+        new GetCollection(
+            security: 'is_granted("ROLE_MODERATOR")',
+        ),
         new Post(
             denormalizationContext: [
                 'groups' => ['User:write'],
@@ -34,8 +38,11 @@ use Symfony\Component\Validator\Constraints as Assert;
             denormalizationContext: [
                 'groups' => ['User:update'],
             ],
+            security: 'is_granted("ROLE_ADMIN") or (is_granted("IS_AUTHENTICATED_FULLY") and object.getUserIdentifier() == user.getUserIdentifier())',
         ),
-        new Delete(),
+        new Delete(
+            security: 'is_granted("ROLE_ADMIN")',
+        ),
     ],
     normalizationContext: [
         'groups' => ['User:read'],

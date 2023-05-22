@@ -26,13 +26,17 @@ use Symfony\Component\Validator\Constraints as Assert;
             denormalizationContext: [
                 'groups' => ['GeoRegion:write'],
             ],
+            security: 'is_granted("ROLE_ADMIN")',
         ),
         new Patch(
             denormalizationContext: [
                 'groups' => ['GeoRegion:update'],
             ],
+            security: 'is_granted("ROLE_ADMIN")',
         ),
-        new Delete(),
+        new Delete(
+            security: 'is_granted("ROLE_ADMIN")',
+        ),
     ],
     normalizationContext: [
         'groups' => ['GeoRegion:read'],

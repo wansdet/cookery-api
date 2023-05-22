@@ -27,13 +27,17 @@ use Symfony\Component\Validator\Constraints as Assert;
             denormalizationContext: [
                 'groups' => ['Recipe:write'],
             ],
+            security: 'is_granted("ROLE_USER")',
         ),
         new Patch(
             denormalizationContext: [
                 'groups' => ['Recipe:update'],
             ],
+            security: 'is_granted("ROLE_MODERATOR") or (is_granted("ROLE_USER") and object.getUserIdentifier() == user.getUserIdentifier())',
         ),
-        new Delete(),
+        new Delete(
+            security: 'is_granted("ROLE_MODERATOR")',
+        ),
     ],
     normalizationContext: [
         'groups' => ['Recipe:read'],
